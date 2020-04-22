@@ -111,7 +111,7 @@
 	.lib-css(background, @block__background);
 	.abs-boxshadow(@box-shadow);
 	.abs-borderradius(@border-radius);
-   
+    width: 100%;
     padding: @indent__base;
 	margin-bottom:@indent__xl;
 	float:left;
@@ -460,13 +460,12 @@
     .actions {
     }
     .action.tocart {
-       width: 40%;
-       background: #ff9a00;
-       border: 1px solid #ff9a00;
+        &:extend(.abs-button-l all);
+        &:extend(.abs-button-responsive all);
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
         vertical-align: top;
-    }
-    .action.buynow {
-       width: 40%; 
     }
 }
 

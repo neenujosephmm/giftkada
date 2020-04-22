@@ -58,6 +58,9 @@
 			</container>
 		</container>			
 	</referenceContainer>
+	<!--<referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="customblock" before="top.search" template="Magento_Theme::custom.phtml" />
+        </referenceContainer>-->
 	<!--<move element="header.panel" destination="panel.wrapper.top" />
 	<move element="header.links" destination="header.panel.right" />
 	<move element="store_switcher" destination="header.panel.left" before="-" />

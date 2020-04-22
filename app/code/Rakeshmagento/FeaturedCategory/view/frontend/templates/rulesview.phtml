@@ -1,0 +1,39 @@
+<div id="click-me" style="margin-left: 960px;"><button>View Rules</button></div>
+<div id="popup-modal" style="display:none;">
+    <h5> 1. By definition, "New Users" are individuals who have never placed an order on giftkada. </h5>
+     <h5> 2. There is a limit of one New User Coupon per each new user. </h5>
+      <h5> 3. To use the New User Coupon, the order amount must exceed the required purchase minimum listed for the coupon. </h5>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'New User Coupen rules',
+                buttons: [{
+                    text: $.mage.__('Ok'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#popup-modal'));
+            $("#click-me").on('click',function(){ 
+                $("#popup-modal").modal("openModal");
+            });
+
+        }
+    );
+</script>

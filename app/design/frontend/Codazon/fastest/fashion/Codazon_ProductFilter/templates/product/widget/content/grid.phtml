@@ -61,6 +61,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
 				                        <?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
 				                    </a>
 				                </strong>
+				                
 				                <?php endif ?>
 				                <?php if($block->isShow('review')): ?>
 				                <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
@@ -69,7 +70,15 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
 				                <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
 				                <?php endif ?>
 				                <?php echo $block->getProductDetailsHtml($_product); ?>
-
+                                <?php $miniPrice = $_product->getData('special_price');
+							$maxPrice = $_product->getData('price');
+							$diff = ($maxPrice-$miniPrice);
+							$discount = ($diff/$maxPrice)*100;							
+							?>
+							<div class="dismain">
+							<div class="disclass"><?php if($diff!='') echo "Save $:"."  ".$diff; ?></div>
+							<div class="disclass1"><?php if($diff!='') echo "(".round($discount)."%)"; ?></div>
+							</div>
 				                <div class="product-item-inner">
 				                    <div class="product actions product-item-actions"<?php echo strpos($pos, $viewMode . '-actions') ? $position : ''; ?>>
 				                    	<?php if($block->isShow('addtocart')): ?>

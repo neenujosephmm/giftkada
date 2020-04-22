@@ -58,7 +58,7 @@ $uniqId = uniqid('block_');
 				    <?php if ($iterator%$row==0 || $iterator == 0): ?>
 					<div class="item-slider"> 
 				        <?php endif; ?>
-					<div class="item product product-item">
+					<div class="item product product-item mytestclass">
 				         <div class="product-item-info" data-container="product-grid">
 				        	<div class="product-info-top cdz-hover-section">
 					            <?php
@@ -104,6 +104,15 @@ $uniqId = uniqid('block_');
 				                <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
 				                <?php endif ?>
 				                <?php echo $block->getProductDetailsHtml($_product); ?>
+				                <?php $miniPrice = $_product->getData('minimal_price');
+							$maxPrice = $_product->getData('price');
+							$diff = ($maxPrice-$miniPrice);
+							$discount = ($diff/$maxPrice)*100;							
+							?>
+							<div class="dismain">
+							<div class="disclass"><?php if($diff!='') echo "Save Rs:"."  ".$diff; ?></div>
+							<div class="disclass1"><?php if($diff!='') echo "(".round($discount)."%)"; ?></div>
+							</div>
 
 				                <div class="product-item-inner">				                    
 				                    <?php if($block->isShow('description')): ?>
